@@ -20,9 +20,7 @@ include('includes/header.inc');
 			$tusuario = addslashes($tusuario);
 		}
 
-		function __autoload($nombre_clase) {
-			include 'classes/'.$nombre_clase .'.class.php';
-		}
+		
 
 		$obj=new Controlador();
 		$obj->agregarUsuario($tusuario);
