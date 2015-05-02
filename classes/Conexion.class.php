@@ -7,8 +7,8 @@ class Conexion {
 		$host="localhost";
 		$db="filemanagerdb";
 		$user="root";
-		$pass="";
-		$con =new mysqli("localhost","root","", "filemanagerdb");
+		$pass="root123"; //Ocupo contra en root
+		$con =new mysqli("localhost","root","root123", "filemanagerdb");
 		if(mysqli_connect_errno()){
 			$msgerror = "Error: no se puede conectar a la base de datos";
 			$msgerror .= "Contacte con soporte para resolver el problema";

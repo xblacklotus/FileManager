@@ -40,5 +40,18 @@ class Controlador {
 		$this->cerrarCon();
 	}
 	
+	//****************Mantenimiento: Tipo de Usuarios*****************//
+	public function agregarUsuario($tipoU){
+		$this->abrirCon();
+		$sql = "INSERT INTO tipo_usuario(nombre) ";
+		$sql .= "VALUES (?)";
+		$result = $this->con->prepare($sql);
+		$result->bind_param("s",$tipoU);
+		$result->execute();
+		echo "<div>\n\t<p>\n\t\t";
+		echo $result->affected_rows . " tipo usuario(s) agregado(s) a la base de datos\n";
+		echo "</p>\n</div>\n";
+		$result->close();
+	}
 }
 ?>
