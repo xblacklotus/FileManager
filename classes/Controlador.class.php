@@ -53,5 +53,34 @@ class Controlador {
 		echo "</p>\n</div>\n";
 		$result->close();
 	}
+	public function consultarPerfil($id)
+	{
+		//siempre abrir la con
+		$this->abrirCon();
+		$sql="select * from usuario where id =".$id."";
+		//var_dump($sql);
+		$result = $this->con->query($sql);
+		//var_dump($result);
+		$row=$result->fetch_array();
+ //Obteniendo el número de registros devueltos
+		//var_dump($row);
+		//siempre cerrar la con
+		$this->cerrarCon();
+		return $row;
+	}
+	public function modificarPerfil($id,$nombre,$apellido,$usuario,$pass,$correo)
+	{
+		//siempre abrir la con
+		$this->abrirCon();
+
+		$sql="update usuario set nombre='".$nombre."', apellido='".$apellido."', usuario='".$usuario."', password='".$pass."', correo='".$correo."' where id=".$id."";
+		$result = $this->con->query($sql);
+		//var_dump($result);
+		$this->cerrarCon();
+		return $result;
+	}
+	public function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
 }
 ?>
