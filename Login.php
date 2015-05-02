@@ -17,7 +17,7 @@
 					<form role="form" class="form-inline" action="index.php" method="post" autocomplete="off">
 						<div class="form-group">
 							<input type="text" class="form-control input-lg" required id="txtTipo" name="user" placeholder="Usuario">
-							<input type="text" class="form-control input-lg" required id="txtTipo" name="pass" placeholder="Contraseña">
+							<input type="password" class="form-control input-lg" required id="txtTipo" name="pass" placeholder="Contraseña">
 						</div>
 						<button type="submit" name="ingresar" value="Ingresar" class="btn btn-primary btn-border btn-lg">Ingresar</button>
 					</form>

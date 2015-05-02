@@ -33,7 +33,7 @@ class Controlador {
 		//siempre abrir la con
 		$this->abrirCon();
 		//consulta
-		$sql = "SELECT usuario, u.nombre, apellido,tu.nombre  from usuario as u,tipo_usuario as tu
+		$sql = "SELECT usuario, u.nombre, apellido,tu.nombre,id  from usuario as u,tipo_usuario as tu
 		where u.id_tipo_usuario=tu.id_tipo_usuario and u.usuario=? and u.password=?";
 		 //se prepara la consulta
 		$query = $this->con->prepare($sql);
@@ -42,12 +42,13 @@ class Controlador {
 		//se ejecuta la consulta
 		$query->execute();
 //Asociando a variables los datos solicitados en la consulta SELECT
-		$query->bind_result($user, $name, $lastname,$permisos);
+		$query->bind_result($user, $name, $lastname,$permisos,$id);
 //Preparando las variables de sesión con los datos
 //obtenidos desde la base de datos con bind_result
 		while($query->fetch()){
 			$_SESSION["permisos"] = $permisos;
 			$_SESSION["usuario"] = $user;
+			$_SESSION["id_user"] = $id;
 			$_SESSION["nombreusr"] = $name . " " . $lastname;
 		}
 		$this->cerrarCon();

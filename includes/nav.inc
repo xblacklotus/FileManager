@@ -31,7 +31,7 @@
                             <?php
                         }
                         ?>
-                        <li><a href="Cuenta.php">Cuenta</a></li>
+                        <li><a href="editarPerfil.php">Cuenta</a></li>
                         <li><a href="Salir.php">Salir</a></li>
                         <?php
                     }

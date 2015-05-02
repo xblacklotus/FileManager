@@ -1,10 +1,9 @@
 <?php include 'includes/header.inc'; ?>
 <body>
+	<?php include 'includes/nav.inc'; ?>
 	<?php
-	function __autoload($nombre_clase) {
-		include 'classes/'.$nombre_clase .'.class.php';
-	}
-	$id = 1;
+	
+	$id = $_SESSION['id_user'];
 	$obj=new Controlador();
 	$perfil = $obj-> consultarPerfil($id);
 	?>
