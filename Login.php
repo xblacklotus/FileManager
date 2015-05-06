@@ -11,15 +11,17 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="display center">
-				<h2>Ingresar Tipo Usuario</h2>
+				asfasf
 				<div class="sidebox">
 					<a name="contact_form"></a>
-					<form role="form" class="form-inline" action="insertarTipoUsuario.php" method="post" autocomplete="off">
+					<form role="form" class="form-inline" action="index.php" method="post" autocomplete="off">
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="txtTipo" name="txtTipo" placeholder="Ingresa el Tipo de Usuario">
+							<input type="text" class="form-control input-lg" required id="txtTipo" name="user" placeholder="Usuario">
+							<input type="password" class="form-control input-lg" required id="txtTipo" name="pass" placeholder="Contraseña">
 						</div>
-						<button type="submit" class="btn btn-primary btn-border btn-lg">Agregar</button>
+						<button type="submit" name="ingresar" value="Ingresar" class="btn btn-primary btn-border btn-lg">Ingresar</button>
 					</form>
+					
 				</div>
 			</div>
 		</div>
