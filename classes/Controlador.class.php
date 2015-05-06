@@ -66,7 +66,7 @@ class Controlador {
 		$this->abrirCon();
 		$sql = "UPDATE tipo_usuario SET nombre = '" . $nombre . "' WHERE id_tipo_usuario = '" .$id. "'";
 		$resultc = $this->con->query($sql);
-		$num_results = $this->affected_rows;
+		$num_results = $this->con->affected_rows;
 		echo "<div class=\"query\">\n\t<p>";
 		echo "\t\t" . $num_results . " fila(s) actualizada(s)\n";
 		echo "\t</p>\n</div>\n";
@@ -123,12 +123,12 @@ class Controlador {
 				<h2>Modificar Tipo Usuario</h2>
 				<div class=\"sidebox\">		
 					<a name=\"contact_form\"></a>
-					<form action=\"MostrarTUsuario.php?id=".$id."\" methos=\"POST\" role=\"form\" class=\"form-inline\">
+					<form action=\"MostrarTUsuario.php?id=$id\" method=\"POST\" role=\"form\" class=\"form-inline\">
 						<div class=\"form-group\">
-							<input type=\"text\" class=\"form-control input-lg\" name=\"txtId\" placeholder=\"ID Tipo de Usuario\" maxlength=\"2\" value=\"$id\">
+							<input type=\"text\" name=\"id\" class=\"form-control input-lg\"  placeholder=\"ID Tipo de Usuario\" maxlength=\"2\" value=\"$id\">
 						</div>
 						<div class=\"form-group\">
-							<input type=\"text\" class=\"form-control input-lg\" name=\"txtTipo\" placeholder=\"Ingresa el Tipo de Usuario\" maxlength=\"20\" value=\"" . $row['nombre'] ."\">
+							<input type=\"text\" name=\"tpo\" class=\"form-control input-lg\" placeholder=\"Ingresa el Tipo de Usuario\" maxlength=\"20\" value=\"" . $row['nombre'] ."\">
 						</div>
 						
 						<input type=\"submit\" name=\"guardar\" value=\"Guardar\" />

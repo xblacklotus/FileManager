@@ -3,10 +3,6 @@
 	<?php
 	include('includes/nav.inc');
 		//
-	function __autoload($nombre_clase) {
-		include 'classes/'.$nombre_clase .'.class.php';
-	}
-
 	$db = new Controlador();
 	$db->modTU($_GET['id']);
 	?>
