@@ -153,5 +153,156 @@ public function elmTU($id){
 	$msg .= "else{location.href=\"mostrarTUsuario.php?opc=eliminar&del=n\";}</script>";
 	echo utf8_decode($msg);
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//****************Mantenimiento: Tipo de Servicios*****************//
+public function agregarTServicio($tipoS, $descr, $capac, $arch_perm, $capa_arch, $limi_diar){
+	$this->abrirCon();
+	$sql = "INSERT INTO tipo_servicio(nombre, descripcion, capacidad, archivos_permitidos, capacidad_archivo, limite_diario) ";
+	$sql .= "VALUES (?,?,?,?,?,?)";
+	$result = $this->con->prepare($sql);
+	$result->bind_param("ssisii",$tipoS, $descr, $capac, $arch_perm, $capa_arch, $limi_diar);
+	$result->execute();
+	echo "<div>\n\t<p>\n\t\t";
+	echo $result->affected_rows . " tipo servicio(s) agregado(s) a la base de datos\n";
+	echo "</p>\n</div>\n";
+	$result->close();
+}
+
+public function eliminarTServicio($id){
+	$this->abrirCon();
+	$sql = "DELETE FROM tipo_servicio WHERE id_tipo_servicio = '" . $id . "'";
+	$resultc = $this->con->query($sql);
+	$num_results = $this->con->affected_rows;
+	echo "Se ha eliminado " .$num_results." registros con id = [" . $id . "]<br/>";
+}
+
+public function modificarTServicio($id, $nombre , $descr, $capac, $arch_perm, $capa_arch, $limi_diar){
+	$this->abrirCon();
+	$sql = "UPDATE tipo_servicio SET nombre = '" . $nombre . "' , descripcion = '" . $descr . "', capacidad = '" . $capac . "' , archivos_permitidos = '" . $arch_perm . "' , capacidad_archivo = '" . $capa_arch . "' , limite_diario = '" . $limi_diar . "' WHERE id_tipo_servicio = '" .$id. "'";
+	$resultc = $this->con->query($sql);
+	$num_results = $this->con->affected_rows;
+	echo "<div class=\"query\">\n\t<p>";
+	echo "\t\t" . $num_results . " fila(s) actualizada(s)\n";
+	echo "\t</p>\n</div>\n";
+}
+
+public function imprimirTablaTServicio($opc){
+	$this->abrirCon();
+	$sql = "SELECT * FROM tipo_servicio ORDER BY nombre";
+	$result = $this->con->query($sql);
+	$num_res = $result->num_rows;
+		//Imprimimos la taaaaaaabla
+	echo "<table>\n
+	\t<thead>\n
+	\t\t<tr>\n
+	\t\t\t<th>ID</th>\n
+	\t\t\t<th>TIPO SERVICIO</th>\n
+	\t\t\t<th>DESCRIPCION</th>\n
+	\t\t\t<th>CAPACIDAD</th>\n
+	\t\t\t<th>ARCHIVOS PERMITIDOS</th>\n
+	\t\t\t<th>CAPACIDAD ARCHIVO</th>\n
+	\t\t\t<th>LIMITE DIARIO</th>\n
+	\t\t\t<th>ACCIÓN</th>\n
+	\t\t</tr>\n
+	\t</thead>\n
+	\t<tbody>\n";
+	while($row = $result->fetch_assoc()){
+		echo "\t\t<tr>\n";
+		echo "\t\t\t<td>\n";
+		echo "\t\t\t\t" . $row['id_tipo_servicio'] . "\n";
+		echo "\t\t\t</td>\n\t\t\t\t<td>\n";
+		echo "\t\t\t\t" . stripslashes($row['nombre']) . "\n";
+		echo "\t\t\t</td>\n\t\t\t\t<td>\n";
+		echo "\t\t\t\t" . stripslashes($row['descripcion']) . "\n";
+		echo "\t\t\t</td>\n\t\t\t<td>GB\n";
+		echo "\t\t\t\t" . $row['capacidad'] . "\n";
+		echo "\t\t\t</td>\n\t\t\t<td>\n";
+		echo "\t\t\t\t" . stripslashes($row['archivos_permitidos']) . "\n";
+		echo "\t\t\t</td>\n\t\t\t<td>MB\n";
+		echo "\t\t\t\t" . $row['capacidad_archivo'] . "\n";
+		echo "\t\t\t</td>\n\t\t\t<td>\n";
+		echo "\t\t\t\t" . $row['limite_diario'] . "\n";
+		echo "\t\t\t</td>\n\t\t\t<td align=\"center\">\n";
+		echo "\t\t\t\t[<a href=\"" . $opc . "TS.php?id=" . $row['id_tipo_servicio'] . "\">\n";
+		echo "\t\t\t\t\t" . $opc . "\n";
+		echo "\t\t\t\t</a>]\n";
+		echo "\t\t\t</td>\n\t\t</tr>\n";
+	}
+	echo "\t</tbody>\n";
+	echo "\t<tfoot>\n";
+	echo "\t\t<tr>\n";
+	echo "\t\t\t<th colspan=\"8\">\n";
+		//Mostrando el número total de registros de la tabla 
+	echo "\t\t\t\tNúmero de registros: " . $num_res . "\n";
+	echo "\t\t\t</th>\n";
+	echo "\t</tr>\n";
+	echo "\t</tfoot>\n";
+	echo "</table>\n";
+}
+
+public function modTS($id){
+	$this->abrirCon();
+	$sql = "SELECT * FROM tipo_servicio WHERE id_tipo_servicio = '" . $id . "'";
+	$result = $this->con->query($sql);
+	$num_res = $result->num_rows;
+	$row = $result->fetch_assoc();
+	echo "<div class=\"row\">
+	<div class=\"col-lg-12\">
+		<div class=\"display center\">
+			<h2>Modificar Tipo Servicio</h2>
+			<div class=\"sidebox\">		
+				<a name=\"contact_form\"></a>
+				<form action=\"MostrarTServicio.php?id=$id\" method=\"POST\" role=\"form\" class=\"form-inline\">
+					<div class=\"form-group\">
+						<input type=\"text\" name=\"id\" class=\"form-control input-lg\"  placeholder=\"ID Tipo de Servicio\" maxlength=\"2\" value=\"$id\">
+					</div>
+					<div class=\"form-group\">
+						<input type=\"text\" name=\"nombre\" class=\"form-control input-lg\" placeholder=\"Nombre del Tipo de Servicio\" maxlength=\"20\" value=\"" . $row['nombre'] ."\">
+					</div>
+					<div class=\"form-group\">
+						<input type=\"text\" name=\"descripcion\" class=\"form-control input-lg\" placeholder=\"Descripción del Tipo de Servicio\" maxlength=\"200\" value=\"" . $row['descripcion'] ."\">
+					</div>
+					<div class=\"form-group\">
+						<input type=\"text\" name=\"capacidad\" class=\"form-control input-lg\" placeholder=\"Capacidad del Tipo de Servicio\" maxlength=\"11\" value=\"" . $row['capacidad'] ."\">
+					</div>
+					<div class=\"form-group\">
+						<input type=\"text\" name=\"arch_perm\" class=\"form-control input-lg\" placeholder=\"Archivos Permitidos del Tipo de Servicio\" maxlength=\"200\" value=\"" . $row['archivos_permitidos'] ."\">
+					</div>
+					<div class=\"form-group\">
+						<input type=\"text\" name=\"capa_arch\" class=\"form-control input-lg\" placeholder=\"Capacidad de archivo del Tipo de Servicio\" maxlength=\"11\" value=\"" . $row['capacidad_archivo'] ."\">
+					</div>
+					<div class=\"form-group\">
+						<input type=\"text\" name=\"limi_diar\" class=\"form-control input-lg\" placeholder=\"Limite diario del Tipo de Servicio\" maxlength=\"11\" value=\"" . $row['limite_diario'] ."\">
+					</div>
+					<input type=\"submit\" name=\"guardar\" value=\"Guardar\" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>";
+}
+
+public function elmTS($id){
+	$this->abrirCon();
+	$sql = "SELECT * FROM tipo_servicio WHERE id_tipo_servicio = '" . $id . "'";
+	$result = $this->con->query($sql);
+	$row = $result->fetch_assoc();
+	$msg = "<script text=\"text/javascript\">\n";
+	$preg = "Deseas eliminar el tipo de servicio :";
+	$preg .= "id = " . $row['id_tipo_servicio'] . ",";
+	$preg .= "nombre = " . $row['nombre'] . ",";
+	$preg .= "descripcion = " . $row['descripcion'] . ",";
+	$preg .= "capacidad = " . $row['capacidad'] . ",";
+	$preg .= "archivos_permitidos = " . $row['archivos_permitidos'] . ",";
+	$preg .= "capacidad_archivo = " . $row['capacidad_archivo'] . ",";
+	$preg .= "limite_diario = " . $row['limite_diario'] . ".";
+	$msg .= "if(confirm(\"" . $preg . "\")){";
+	$msg .= "location.href=\"mostrarTServicio.php?opc=eliminar&del=s&id=" . $id . "\";}";
+	$msg .= "else{location.href=\"mostrarTServicio.php?opc=eliminar&del=n\";}</script>";
+	echo utf8_decode($msg);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 }
 ?>
