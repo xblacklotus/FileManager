@@ -38,7 +38,6 @@
                     else
                     {
                         ?>
-                        <li><a href="TipoUsuarios.php">Nuevo Tipo Usuario</a></li>
                         <li><a href="Registrarse.php">Registrarse</a></li>
                         <li><a href="Login.php">Login</a></li>
                         <?php
