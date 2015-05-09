@@ -3,6 +3,19 @@
 	<?php
 	include('includes/nav.inc');
 
+	?>
+<div id="content-full">
+		<div class="container cont-main">
+			<div class="transparent-bg"></div>
+			<div id="boxed-area" class="page-content">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="display center">
+	<?php
+
 	$obj = new Controlador();
 		//
 		/*Si llamamos desde el frm de modificar T Usuario
@@ -37,6 +50,9 @@
 		$obj->imprimirTablaTUsuario($_GET['opc']);
 		?>
 		<a href="index.php">Regresar al index</a>
+		</div>
+		</div>
+	</div>
 		<?php include('includes/footer.inc'); ?>
 </body>
 </html>

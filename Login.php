@@ -11,7 +11,6 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="display center">
-				asfasf
 				<div class="sidebox">
 					<a name="contact_form"></a>
 					<form role="form" class="form-inline" action="index.php" method="post" autocomplete="off">
