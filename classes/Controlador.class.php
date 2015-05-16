@@ -155,7 +155,7 @@ class Controlador {
 		echo "\t</p>\n</div>\n";
 	}
 
-	public function imprimirTablaTUsuario($opc){
+	public function imprimirTablaTUsuario(){
 		$this->abrirCon();
 		$sql = "SELECT * FROM tipo_usuario ORDER BY nombre";
 		$result = $this->con->query($sql);
@@ -177,9 +177,8 @@ class Controlador {
 			echo "\t\t\t</td>\n\t\t\t\t<td>\n";
 			echo "\t\t\t\t" . stripslashes($row['nombre']) . "\n";
 			echo "\t\t\t</td>\n\t\t\t<td align=\"center\">\n";
-			echo "\t\t\t\t[<a href=\"" . $opc . "TU.php?id=" . $row['id_tipo_usuario'] . "\">\n";
-			echo "\t\t\t\t\t" . $opc . "\n";
-			echo "\t\t\t\t</a>]\n";
+			echo "\t\t\t\t[<a href=\"modificarTU.php?id=" . $row['id_tipo_usuario'] . "\">Modificar</a>]\n";
+			echo "\t\t\t\t[<a href=\"eliminarTU.php?id=" . $row['id_tipo_usuario'] . "\">Eliminar</a>]\n";
 			echo "\t\t\t</td>\n\t\t</tr>\n";
 		}
 		echo "\t</tbody>\n";
@@ -269,7 +268,7 @@ public function modificarTServicio($id, $nombre , $descr, $capac, $arch_perm, $c
 	echo "\t</p>\n</div>\n";
 }
 
-public function imprimirTablaTServicio($opc){
+public function imprimirTablaTServicio(){
 	$this->abrirCon();
 	$sql = "SELECT * FROM tipo_servicio ORDER BY nombre";
 	$result = $this->con->query($sql);
@@ -306,9 +305,9 @@ public function imprimirTablaTServicio($opc){
 		echo "\t\t\t</td>\n\t\t\t<td>\n";
 		echo "\t\t\t\t" . $row['limite_diario'] . "\n";
 		echo "\t\t\t</td>\n\t\t\t<td align=\"center\">\n";
-		echo "\t\t\t\t[<a href=\"" . $opc . "TS.php?id=" . $row['id_tipo_servicio'] . "\">\n";
-		echo "\t\t\t\t\t" . $opc . "\n";
-		echo "\t\t\t\t</a>]\n";
+		echo "\t\t\t\t[<a href=\"modificarTS.php?id=" . $row['id_tipo_servicio'] . "\">Modificar</a>]\n";
+		echo "\t\t\t\t[<a href=\"eliminarTS.php?id=" . $row['id_tipo_servicio'] . "\">Eliminar</a>]\n";
+		echo "\t\t\t\t\n";
 		echo "\t\t\t</td>\n\t\t</tr>\n";
 	}
 	echo "\t</tbody>\n";

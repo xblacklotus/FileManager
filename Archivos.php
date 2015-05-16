@@ -15,7 +15,10 @@
 			$cont->eliminarArchivo($_POST["archivo"]);
 		}
 		$cont=new Controlador1();
-		$datos=$cont->consultarArchivos();
+		if($_SESSION["permisos"]=="Admin")
+			$datos=$cont->consultarArchivosAdmin();
+		else
+			$datos=$cont->consultarArchivos();
 
 		if(is_array($datos))
 		{
@@ -24,7 +27,21 @@
 			foreach ($datos as $value) {
 				?>
 				<form role="form" class="form" action="archivo.php?archivo=<?php echo $value["id_archivo"]; ?>" method="post" autocomplete="off" enctype="multipart/form-data">
+				<?php
+				if($_SESSION["permisos"]=="Admin")
+				{
+					?>
+					<h2>Usuario que lo subio</h2>
+					<h3>
+					<?php echo $value["usuario"];?></h3>
+					<?php
+				}
+			
+		?>
+					<h4>Nombre</h4>
 					<?php echo $value["nombre"];?>
+					<h5>Descripcion</h5>
+					<?php echo $value["descripcion"];?>
 					<input type="hidden" name="nombre" value="<?php echo $value["nombre"];?>">
 					<input type="hidden" name="archivo" value="<?php echo $value["id_archivo"]; ?>">
 					<input type="submit" name="Subir" value="Descargar" class="btn btn-primary btn-border btn-lg"/>

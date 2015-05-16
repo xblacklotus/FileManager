@@ -35,9 +35,7 @@
                                 <li><a href="TipoUsuarios.php">Agregar</a></li>
                                 <li class="divider"></li>
 
-                                <li><a href="MostrarTUsuario.php?opc=modificar">Modificar</a></li>
-                                <li class="divider"></li>
-                                <li><a href="MostrarTUsuario.php?opc=eliminar">Eliminar</a></li>
+                                <li><a href="MostrarTUsuario.php">Consultar</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -45,9 +43,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="TipoServicio.php">Agregar</a></li>
                                 <li class="divider"></li>
-                                <li><a href="MostrarTServicio.php?opc=modificar">Modificar</a></li>
-                                <li class="divider"></li>
-                                <li><a href="MostrarTServicio.php?opc=eliminar">Eliminar</a></li>
+                                <li><a href="MostrarTServicio.php?opc=modificar">Consultar</a></li>
                             </ul>
                         </li>
                         <?php

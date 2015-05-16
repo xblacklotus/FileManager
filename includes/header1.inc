@@ -13,10 +13,6 @@ if(isset($_POST['ingresar']))
     $cont->loguearse($user,$pass);
 }
 
-if(!isset($_SESSION["user"]))
-{
-    header("Location: Login.php");
-}
 if(isset($_POST['registrar']))
 {
     $user = trim($_POST['user']);

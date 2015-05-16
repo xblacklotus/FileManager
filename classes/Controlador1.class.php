@@ -96,7 +96,24 @@ class Controlador1 {
 	function consultarArchivos()
 	{
 		$this->abrirCon();
-		$sql="select nombre,id_archivo from archivos where id_usuario=".$_SESSION['id_user'];
+		$sql="select nombre,id_archivo,descripcion from archivos where id_usuario=".$_SESSION['id_user'];
+		//var_dump($sql);
+		//$query = $this->con->prepare($sql);
+		//se pasan los parametros$result = $this->con->query($sql);
+		$query = $this->con->query($sql);
+		$datos=null;
+		while ( $row = $query->fetch_assoc()) {
+			$datos[]=$row;
+		}
+		//siempre cerrar la con
+		$this->cerrarCon();
+		return $datos;
+	}
+	function consultarArchivosAdmin()
+	{
+		$this->abrirCon();
+		$sql="select a.nombre,id_archivo,descripcion,u.nombre as usuario from archivos as a,usuario as u
+			where u.id = a.id_usuario";
 		//var_dump($sql);
 		//$query = $this->con->prepare($sql);
 		//se pasan los parametros$result = $this->con->query($sql);

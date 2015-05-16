@@ -1,4 +1,4 @@
-<?php include 'includes/header.inc'; ?>
+<?php include 'includes/header1.inc'; ?>
 <body>
 <div class="container">
 	<?php include 'includes/nav.inc'; ?>

@@ -43,7 +43,7 @@
 		}
 
 		//Hacemos una consult de todos lo T Usuario
-		$obj->imprimirTablaTServicio($_GET['opc']);
+		$obj->imprimirTablaTServicio();
 		?>
 		<a href="index.php">Regresar al index</a>
 		<?php include('includes/footer.inc'); ?>
