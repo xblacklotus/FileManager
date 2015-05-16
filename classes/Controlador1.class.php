@@ -9,7 +9,7 @@ class Controlador1 {
 
 	function __construct() {
 		//se abre lac conexion y se obtiene
-		$obj=new Conexion();
+		$obj=new conexion();
 		$this->con=$obj->getCon();
 	}
 
@@ -27,14 +27,13 @@ class Controlador1 {
 		}
 	}
 
-	function subirArchivo($descripcion)
+	function subirArchivo()
 	{
 		$tmp_name = $_FILES["archivo"]["tmp_name"];
 		$name = $_FILES["archivo"]["name"];
 		$size = $_FILES["archivo"]["size"];
-		if(move_uploaded_file($tmp_name, 'files/' .$_SESSION["usuario"]."/". $name)){
-			if($this->guardarDatosArchivos($name,'files/' .$_SESSION["usuario"]."/".$name,$descripcion))
-				echo "Se ha cargado correctamente el archivo " . $name . " en el
+		if(move_uploaded_file($tmp_name, 'files/' . $name)){
+			echo "Se ha cargado correctamente el archivo " . $name . " en el
 			servidor.<br />\n";
 		}
 		else{
@@ -73,76 +72,11 @@ class Controlador1 {
 		}
 	}
 
-	function guardarDatosArchivos($nombre,$ruta,$descripcion)
+	function guardarDatosArchivos()
 	{
-		$resp=false;
-		//siempre abrir la con
-		$this->abrirCon();
-		//consulta
-		$user=intval( $_SESSION["id_user"]);
-		$sql = "INSERT INTO archivos(nombre,ruta,descripcion,id_usuario) values(?,?,?,?)";
-		 //se prepara la consulta
-		$query = $this->con->prepare($sql);
-		//se pasan los parametros
-		$query->bind_param("sssi", $nombre, $ruta,$descripcion,$user);
-		//se ejecuta la consulta
-		if($query->execute())
-		{
-			$resp=true;
-		}
-		$this->cerrarCon();
-		return $resp;
-	}
-
-	function consultarArchivos()
-	{
-		$this->abrirCon();
-		$sql="select nombre,id_archivo from archivos where id_usuario=".$_SESSION['id_user'];
-		//var_dump($sql);
-		//$query = $this->con->prepare($sql);
-		//se pasan los parametros$result = $this->con->query($sql);
-		$query = $this->con->query($sql);
 		
-		while ( $row = $query->fetch_assoc()) {
-			$datos[]=$row;
-		}
-		//siempre cerrar la con
-		$this->cerrarCon();
-		return $datos;
 	}
 
-	public function getRuta($archivo)
-	{
-		$this->abrirCon();
-		$sql="select ruta from archivos where id_archivo=".$archivo;
-		//var_dump($sql);
-		//$query = $this->con->prepare($sql);
-		//se pasan los parametros$result = $this->con->query($sql);
-		$query = $this->con->query($sql);
-		$ruta=null;
-		while ( $row = $query->fetch_assoc()) {
-			$ruta=$row;
-		}
-		//siempre cerrar la con
-		$this->cerrarCon();
-		return $ruta;
-	}
-	public function getNombre($archivo)
-	{
-		$this->abrirCon();
-		$sql="select nombre from archivos where id_archivo=".$archivo;
-		//var_dump($sql);
-		//$query = $this->con->prepare($sql);
-		//se pasan los parametros$result = $this->con->query($sql);
-		$query = $this->con->query($sql);
-		$ruta=null;
-		while ( $row = $query->fetch_assoc()) {
-			$ruta=$row;
-		}
-		//siempre cerrar la con
-		$this->cerrarCon();
-		return $ruta;
-	}
 }
 
 

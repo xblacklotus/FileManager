@@ -28,12 +28,7 @@ if(isset($_POST['registrar']))
     if($cont->registrarUsuario($nombre,$apellido,$user,$pass,$correo,$servicio))
         echo "entra";
     else
-    {
         echo "no entra";
-        echo $cont->con->error;
-    }
-
-    
 }
 
 
