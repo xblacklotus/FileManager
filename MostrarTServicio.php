@@ -1,9 +1,11 @@
 <?php include('includes/header.inc'); ?>
 <body>
-	<?php
-	include('includes/nav.inc');
+	<div class="container">
 
-	$obj = new Controlador();
+		<?php
+		include('includes/nav.inc');
+		echo '<h2>Registros Servicio</h2>';
+		$obj = new Controlador();
 		//
 		/*Si llamamos desde el frm de modificar T Servicio
 		ejecutamos primero la actualizacion del registro*/
@@ -45,5 +47,7 @@
 		?>
 		<a href="index.php">Regresar al index</a>
 		<?php include('includes/footer.inc'); ?>
+		<?php include 'includes/scripts.inc'; ?>
+	</div>
 </body>
 </html>

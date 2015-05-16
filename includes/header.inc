@@ -42,6 +42,7 @@ if(isset($_POST['registrar']))
     <meta name="description" content="">
 
     <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/sinin.css" rel="stylesheet">
     <script src="scripts/bootstrap/js/bootstrap.js" type="text/javascript"></script>
     <script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="scripts/jquery-1.10.2.min.js"></script>

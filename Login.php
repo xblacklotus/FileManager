@@ -1,30 +1,22 @@
 <?php include 'includes/header.inc'; ?>
 <body>
+<div class="container">
 	<?php include 'includes/nav.inc'; ?>
-	<div id="content-full">
-		<div class="container cont-main">
-			<div class="transparent-bg"></div>
-			<div id="boxed-area" class="page-content">
-			</div>
+	<form role="form" class="form-signin" action="index.php" method="post" autocomplete="off">
+	<h2 class="form-signin-heading">Accesso</h2>
+		<div class="form-group">
+		Usuario:
+			<input type="text" class="form-control input-lg" required id="txtTipo" name="user" placeholder="Usuario">
+
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="display center">
-				<div class="sidebox">
-					<a name="contact_form"></a>
-					<form role="form" class="form-inline" action="index.php" method="post" autocomplete="off">
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" required id="txtTipo" name="user" placeholder="Usuario">
-							<input type="password" class="form-control input-lg" required id="txtTipo" name="pass" placeholder="Contraseña">
-						</div>
-						<button type="submit" name="ingresar" value="Ingresar" class="btn btn-primary btn-border btn-lg">Ingresar</button>
-					</form>
-					
-				</div>
-			</div>
+		<div class="form-group">
+			Contraseña:
+			<input type="password" class="form-control input-lg" required id="txtTipo" name="pass" placeholder="Contraseña">
 		</div>
-	</div>
+		<button type="submit" name="ingresar" value="Ingresar" class="btn btn-primary btn-border btn-lg">Ingresar</button>
+	</form>
+	<?php include 'includes/footer.inc'; ?>
 	<?php include 'includes/scripts.inc'; ?>
+	</div>
 </body>
 </html>
