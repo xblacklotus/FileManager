@@ -16,6 +16,7 @@
 					</h2>
 					<input type="hidden" name="archivo" value="<?php echo $_GET["archivo"]; ?>">
 					<input type="submit" name="Subir" value="Descargar" class="btn btn-primary btn-border btn-lg"/>
+					
 				</form>
 				<?php
 			}

@@ -34,8 +34,7 @@ class Controlador1 {
 		$size = $_FILES["archivo"]["size"];
 		if(move_uploaded_file($tmp_name, 'files/' .$_SESSION["usuario"]."/". $name)){
 			if($this->guardarDatosArchivos($name,'files/' .$_SESSION["usuario"]."/".$name,$descripcion))
-				echo "Se ha cargado correctamente el archivo " . $name . " en el
-			servidor.<br />\n";
+				echo "Se ha subido correctamente el archivo " . $name . " <br />\n";
 		}
 		else{
 			switch($_FILES['archivos']['error'][$i]){
@@ -102,13 +101,40 @@ class Controlador1 {
 		//$query = $this->con->prepare($sql);
 		//se pasan los parametros$result = $this->con->query($sql);
 		$query = $this->con->query($sql);
-		
+		$datos=null;
 		while ( $row = $query->fetch_assoc()) {
 			$datos[]=$row;
 		}
 		//siempre cerrar la con
 		$this->cerrarCon();
 		return $datos;
+	}
+	function eliminarArchivo($archivo)
+	{
+		$resp=false;
+		//siempre abrir la con
+		$this->abrirCon();
+		//consulta
+		$sql = "DELETE FROM archivos where id_archivo=?";
+		 //se prepara la consulta
+		$query = $this->con->prepare($sql);
+		//se pasan los parametros
+		$query->bind_param("i", $archivo);
+		//se ejecuta la consulta
+		$arch=$this->getRuta($archivo);
+		$arch=$arch["ruta"];
+		
+		if($query->execute())
+		{
+			if(file_exists($arch))
+			{
+				unlink($arch);
+			}
+			$resp=true;
+			$this->cerrarCon();
+			return $resp;
+		}
+		
 	}
 
 	public function getRuta($archivo)
@@ -124,7 +150,7 @@ class Controlador1 {
 			$ruta=$row;
 		}
 		//siempre cerrar la con
-		$this->cerrarCon();
+		//$this->cerrarCon();
 		return $ruta;
 	}
 	public function getNombre($archivo)
