@@ -7,5 +7,6 @@
 	$db->modTS($_GET['id']);
 	?>
 	<a href="MostrarTServicio.php?opc=modificar" target="_self" title="Modificar Tipo Servicio">Volver</a>
+	<?php include 'includes/scripts.inc'; ?>
 	<?php include('includes/footer.inc'); ?>
 </body>

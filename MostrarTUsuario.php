@@ -1,22 +1,15 @@
 <?php include('includes/header.inc'); ?>
 <body>
+	
+	<div class="container">
 	<?php
 	include('includes/nav.inc');
 
 	?>
-<div id="content-full">
-		<div class="container cont-main">
-			<div class="transparent-bg"></div>
-			<div id="boxed-area" class="page-content">
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="display center">
-	<?php
+	<h2>Registros usuario</h2>
+		<?php
 
-	$obj = new Controlador();
+		$obj = new Controlador();
 		//
 		/*Si llamamos desde el frm de modificar T Usuario
 		ejecutamos primero la actualizacion del registro*/
@@ -50,9 +43,10 @@
 		$obj->imprimirTablaTUsuario($_GET['opc']);
 		?>
 		<a href="index.php">Regresar al index</a>
-		</div>
-		</div>
-	</div>
 		<?php include('includes/footer.inc'); ?>
+		<?php include 'includes/scripts.inc'; ?>
+	</div>
+
+
 </body>
 </html>

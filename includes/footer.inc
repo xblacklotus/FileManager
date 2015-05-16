@@ -7,5 +7,6 @@
             <a href="https://twitter.com/udbelsalvador" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a> &nbsp; 
             <a href="http://www.gmail.com" target="_blank" data-toggle="tooltip" data-placement="top" title="" data-original-title="Email"><i class="fa fa-envelope-o"></i></a>
         </p>
+        
     </div>
 </div>

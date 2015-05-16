@@ -40,10 +40,13 @@ if(isset($_POST['registrar']))
     <title>.:FileManager:.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
+
     <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/stylesheet.css" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Source+Sans+Pro:200" rel="stylesheet" type="text/css">
+    <script src="scripts/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="scripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="scripts/jquery-1.10.2.min.js"></script>
+<script src="scripts/default.js" type="text/javascript"></script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="scripts/html5shiv.js"></script>
