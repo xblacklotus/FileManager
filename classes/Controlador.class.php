@@ -3,7 +3,7 @@
 //para no molestarse con los nombres de las clases tanto
 
 class Controlador {
-	private $con;
+	public $con;
 	//esto lo haremos como en poo, mas ordenado 
 	//aunq no es necesario los get y set 
 
@@ -71,18 +71,19 @@ class Controlador {
 		values(?,?,?,?,?,?,?)";
 		 //se prepara la consulta
 		$query = $this->con->prepare($sql);
-		var_dump($query);
+		
 		//se pasan los parametros
 		$tipo_usuario=2;
 		$query->bind_param("sssssii", $nombre, $apellido,$user, $pass, $correo, $tipo_usuario , $servicio);
 		//se ejecuta la consulta
 		if($query->execute())
 		{
-			$resp=true;
+			if(mkdir("files/".$user)) {
+				$resp=true;
+			}
+			
 		}
-		$sql="select * from tipo_servicio";
-		$result = $this->con->query($sql);
-		$row=$result->fetch_array();
+		echo $this->con->error;
  //Obteniendo el número de registros devueltos
 		//siempre cerrar la con
 		$this->cerrarCon();

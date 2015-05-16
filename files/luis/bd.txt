@@ -1,0 +1,3 @@
+base = poo1
+usuario= xblacklotus95
+contra=bdparapoo1
