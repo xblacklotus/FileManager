@@ -2,6 +2,7 @@
 include('includes/header.inc');
 ?>
 <body>
+	<?php include('includes/nav.inc'); ?>
 	<header>
 		<h1>Resultado al agregar tipo de usuario</h1>
 	</header>
@@ -27,5 +28,6 @@ include('includes/header.inc');
 		?>
 		<br />
 		<a href="TipoUsuarios.php">Agregar otro Tipo Usuario</a>
-	<div>
+	</div>
+	<?php include('includes/footer.inc'); ?>
 </body>

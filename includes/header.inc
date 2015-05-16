@@ -18,7 +18,7 @@ if(isset($_POST['registrar']))
     $pass = trim($_POST['pass']);
     $pass1 = trim($_POST['pass1']);
     if($pass!==$pass1)
-        header("Location: Registrars.php");
+        header("Location: Registrarse.php");
     $nombre = trim($_POST['nombre']);
     $apellido = trim($_POST['apellido']);
     $correo = trim($_POST['correo']);

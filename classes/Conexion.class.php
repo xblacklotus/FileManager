@@ -8,7 +8,8 @@ class Conexion {
 		$db="filemanagerdb";
 		$user="root";
 		$pass=""; //Ocupo contra en root
-		//quitasela >_> nadie usa contra -.-
+		//A mysql no me dejaba crear un usuario sin contra.
+		//El problema de no trabajar con phpmyadmin
 		$con =new mysqli($host,$user,$pass, $db);
 		if(mysqli_connect_errno()){
 			$msgerror = "Error: no se puede conectar a la base de datos";
