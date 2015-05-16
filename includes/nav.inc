@@ -22,7 +22,7 @@
                  {
                     ?>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" aria-expanded="false">Archivos</span></a>
+                        <a href="Archivos.php" class="dropdown-toggle" aria-expanded="false">Archivos</span></a>
 
                     </li>
                     <?php

@@ -6,7 +6,6 @@ class Controlador {
 	private $con;
 	//esto lo haremos como en poo, mas ordenado 
 	//aunq no es necesario los get y set 
-	private $hola=1;
 
 	function __construct() {
 		//se abre lac conexion y se obtiene

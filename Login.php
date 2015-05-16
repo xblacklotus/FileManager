@@ -3,7 +3,7 @@
 <div class="container">
 	<?php include 'includes/nav.inc'; ?>
 	<form role="form" class="form-signin" action="index.php" method="post" autocomplete="off">
-	<h2 class="form-signin-heading">Accesso</h2>
+	<h2 class="form-signin-heading">Acceso</h2>
 		<div class="form-group">
 		Usuario:
 			<input type="text" class="form-control input-lg" required id="txtTipo" name="user" placeholder="Usuario">
